@@ -6,16 +6,16 @@ export default [
     genre: `rock`,
     answers: [
       {
-        src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+        src: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3`,
         genre: `rock`
       }, {
         src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
         genre: `blues`,
       }, {
-        src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+        src: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3`,
         genre: `jazz`,
       }, {
-        src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+        src: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3`,
         genre: `rock`,
       }
     ],
@@ -23,7 +23,7 @@ export default [
     type: `artist`,
     song: {
       artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`
+      src: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3`
     },
     answers: [
       {
