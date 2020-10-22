@@ -8,6 +8,9 @@ import GameScreen from "../game-screen/game-screen";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import WinScreen from "../win-screen/win-screen";
 
+import artistQuestionProp from "../artist-question-screen/artist-question.prop.js";
+import genreQuestionProp from "../genre-question-screen/genre-question.prop.js";
+
 
 const App = (props) => {
   const {errorsCount, questions} = props;
@@ -45,7 +48,9 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.arrayOf(
+      PropTypes.oneOf([artistQuestionProp, genreQuestionProp]).isRequired
+  ),
 };
 
 export default App;
