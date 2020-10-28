@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import App from "./components/app/app";
-import questions from "./mocks/question.js";
+import questions from "./mocks/questions.js";
 import {reducer} from "./store/reducer.js";
 
 const Settings = {
