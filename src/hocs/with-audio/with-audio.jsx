@@ -1,5 +1,5 @@
 import React, {createRef, PureComponent} from "react";
-import PropTypes from "props-types";
+import PropTypes from "prop-types";
 
 const withAudio = (Component) => {
   class WithAudio extends PureComponent {
