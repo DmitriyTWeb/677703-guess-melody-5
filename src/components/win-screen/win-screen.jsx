@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-const WinScrenn = (props) => {
-  const {questionCount, mistakesCount, onReplayButtonClick, resetGame} = props;
-  const correctlyQuestionsCount = questionCount - mistakesCount;
+const WinScreen = (props) => {
+  const {questionsCount, mistakesCount, onReplayButtonClick, resetGame} = props;
+  const correctlyQuestionsCount = questionsCount - mistakesCount;
 
   return (
     <section className="result">
@@ -14,7 +14,7 @@ const WinScrenn = (props) => {
       </div>
       <h2 className="result__title">Вы настоящий меломан!</h2>
       <p className="result__total">
-        Вы ответили правильно на 6 вопросов и совершили 2 ошибки
+        Вы ответили правильно на {correctlyQuestionsCount} вопросов и совершили 2 ошибки
       </p>
       <button
         onClick={() => {
@@ -49,5 +49,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export {WinScrenn};
-export default connect(mapStateToProps, mapDispatchToProps)(WinScrenn);
+export {WinScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(WinScreen);
