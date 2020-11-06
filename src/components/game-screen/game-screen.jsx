@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action.js";
-import {GameType} from "../../const.js";
+import {GameType, MAX_MISTAKE_COUNT} from "../../const.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
 import Mistakes from "../mistakes/mistakes";
@@ -11,26 +11,30 @@ import Mistakes from "../mistakes/mistakes";
 import artistQuestionProp from "../artist-question-screen/artist-question.prop";
 import genreQuestionProp from "../genre-question-screen/genre-question.prop";
 
-import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player";
+import withActivePlayer from "../../hocs/with-active-player/with-active-player";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer";
 
-const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
-const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 const GameScreen = (props) => {
   const {
     questions,
     step,
     onUserAnswer,
-    resetGame,
     mistakes,
   } = props;
   const question = questions[step];
 
-  if (step >= questions.length || !questions) {
-    resetGame();
-
+  if (mistakes >= MAX_MISTAKE_COUNT) {
     return (
-      <Redirect to="/" />
+      <Redirect to="/lose" />
+    );
+  }
+
+  if (step >= questions.length || !question) {
+    return (
+      <Redirect to="/result" />
     );
   }
 
@@ -63,8 +67,7 @@ GameScreen.propTypes = {
       PropTypes.oneOfType([artistQuestionProp, genreQuestionProp]).isRequired
   ),
   step: PropTypes.number.isRequired,
-  resetGame: PropTypes.func.isRequired,
-  onUserAnswer: PropTypes.func.isRequire,
+  onUserAnswer: PropTypes.func.isRequired,
   mistakes: PropTypes.number.isRequired,
 };
 
