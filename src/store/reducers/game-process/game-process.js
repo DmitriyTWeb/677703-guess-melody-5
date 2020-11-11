@@ -1,11 +1,10 @@
 import {extend} from "../../../utils.js";
 import {ActionType} from "../../action.js";
-import questions from "../../../mocks/questions.js";
 
 const initialState = {
   mistakes: 0,
   step: 0,
-  questions,
+  questions: [],
 };
 
 const gameProcess = (state = initialState, action) => {
