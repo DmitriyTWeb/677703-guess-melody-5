@@ -4,7 +4,6 @@ import {ActionType} from "../../action.js";
 const initialState = {
   mistakes: 0,
   step: 0,
-  questions: [],
 };
 
 const gameProcess = (state = initialState, action) => {
