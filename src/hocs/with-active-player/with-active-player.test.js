@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import PropTypes from "prop-types";
 import withActivePlayer from "./with-active-player";
 
-
 const MockComponent = (props) => {
   const {children} = props;
 
@@ -15,7 +14,7 @@ const MockComponent = (props) => {
 };
 
 MockComponent.propTypes = {
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
@@ -23,12 +22,12 @@ MockComponent.propTypes = {
 
 const MockComponentWrapped = withActivePlayer(MockComponent);
 
-it(`withAudioPlayer is rendered correctly`, () => {
-  const tree = renderer.create(
-      <MockComponentWrapped>
-        <React.Fragment />
-      </MockComponentWrapped>
-  ).toJSON();
+it(`withActivePlayer is rendered correctly`, () => {
+  const tree = renderer.create((
+    <MockComponentWrapped>
+      <React.Fragment />
+    </MockComponentWrapped>
+  )).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
